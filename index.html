@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOOM · Web Raycaster</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="game-wrapper">
+  <canvas id="canvas" width="800" height="500" tabindex="0"></canvas>
+
+  <div class="boss-bar" id="bossBar">
+    <div class="boss-name" id="bossName">BOSS</div>
+    <div class="boss-hp-track">
+      <div class="boss-hp-fill" id="bossHpFill"></div>
+    </div>
+  </div>
+
+  <div class="loot-hud">
+    <div class="loot-counter ammo-c" id="ammoDropsCounter">🔫 0</div>
+    <div class="loot-counter health-c" id="healthDropsCounter">❤️ 0</div>
+  </div>
+
+  <div class="pickup-log" id="pickupLog"></div>
+
+  <div class="stage-banner" id="stageBanner">STAGE 1</div>
+
+  <div class="start-screen" id="startScreen">
+    <h1>DOOM</h1>
+    <p><span class="key">WASD</span> MOVE</p>
+    <p><span class="key">MOUSE</span> LOOK</p>
+    <p><span class="key">CLICK</span> SHOOT</p>
+    <p><span class="key">ESC</span> SETTINGS</p>
+    <p style="margin-top:12px; color:#ffaa00; font-weight:bold;">💎 KILL ENEMIES FOR LOOT 💎</p>
+    <button id="startBtn">▶ START GAME</button>
+  </div>
+
+  <div class="settings-panel hidden" id="settingsPanel">
+    <h2>⚙️ SETTINGS</h2>
+    <div class="setting-row">
+      <label>MOUSE SENSITIVITY</label>
+      <span class="value-display" id="sensVal">1.00</span>
+      <input type="range" id="sensSlider" min="0.2" max="4.0" step="0.05" value="1.0">
+    </div>
+    <div class="setting-row">
+      <label>FIELD OF VIEW</label>
+      <span class="value-display" id="fovVal">60°</span>
+      <input type="range" id="fovSlider" min="40" max="100" step="1" value="60">
+    </div>
+    <div class="setting-row">
+      <label>MOVE SPEED</label>
+      <span class="value-display" id="speedVal">1.00</span>
+      <input type="range" id="speedSlider" min="0.5" max="2.5" step="0.05" value="1.0">
+    </div>
+    <button class="close-btn" id="closeSettings">◀ RESUME GAME</button>
+  </div>
+
+  <div class="center-message" id="centerMessage"></div>
+
+  <div class="hud">
+    <div>💀 <span class="hp" id="health">100</span></div>
+    <div>🔫 <span class="ammo" id="ammo">50</span></div>
+    <div>🏆 <span id="score">0</span></div>
+    <div>🎯 <span class="stage" id="stageDisplay">STAGE 1</span></div>
+  </div>
+  <div class="controls">
+    <button id="restartBtn">⟲ RESTART</button>
+    <button id="settingsBtn">⚙ SETTINGS</button>
+  </div>
+  <div class="hint">WASD move · MOUSE look · CLICK shoot · Walk over loot to collect</div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
